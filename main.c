@@ -2,6 +2,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include "src/background.h"
+#include "src/pizza.h"
+#include "src/movement.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +13,6 @@ int main(int argc, char *argv[])
     renderer = SDL_CreateRenderer(window, 0);
     SDL_Event buttonPressed;
 
-    printf("Hello World!\n");
     while (1)
     {
         while (SDL_PollEvent(&buttonPressed)) // Pollad lösning: har något hänt?
@@ -23,12 +24,17 @@ int main(int argc, char *argv[])
                 SDL_Quit();                // Stäng program
                 return 0;
             }
+
+            checkDragAndDrop(buttonPressed);
+            
         }
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // set color to white
         SDL_RenderClear(renderer);                            // White background
 
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         renderBackground(renderer);
+
+        renderPizza(renderer);
         SDL_RenderPresent(renderer);
     }
 

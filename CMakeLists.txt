@@ -7,6 +7,6 @@ set(SDL3_DIR "D:/SDL/SDL3/cmake/") #My directory
 
 find_package(SDL3 REQUIRED)
 
-add_executable(my_app main.c src/background.c)
+add_executable(my_app main.c src/background.c src/pizza.c src/movement.c)
 
 target_link_libraries(my_app PRIVATE SDL3::SDL3)
